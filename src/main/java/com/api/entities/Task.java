@@ -1,36 +1,38 @@
 package com.api.entities;
 
-import com.api.entities.utilEnum.ChecklistStatus;
+import com.api.entities.utilEnum.TaskStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "checklist")
+@Table(name = "task")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class Checklist {
+@ToString(exclude = "logs")
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "checklist_id", nullable = false)
-    private Integer checklistId;
+    @Column(name = "task_id", nullable = false)
+    private Integer taskId;
 
-    @Column(name = "checklist_name", nullable = false)
+    @Column(name = "task_name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "status", nullable = false, columnDefinition = "varchar(10) default 'WAITING'")
     @Enumerated(EnumType.STRING)
-    private ChecklistStatus status = ChecklistStatus.WAITING;
+    private TaskStatus status = TaskStatus.WAITING;
 
     @Column(name = "run_time", nullable = false, columnDefinition = "TIME DEFAULT '10:00:00'")
     @Temporal(TemporalType.TIME)
@@ -45,4 +47,9 @@ public class Checklist {
 
     @Column(name = "playable", nullable = false)
     private Boolean playable = false;
+
+    @OneToMany
+    @JoinColumn(name = "log_task_id")
+    @Builder.Default
+    private Set<Log> logs = new HashSet<>();
 }

@@ -1,6 +1,6 @@
 package com.api.entities.utilEnum;
 
-public enum ChecklistStatus {
+public enum TaskStatus {
     WAITING,
     OK,
     KO,
