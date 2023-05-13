@@ -12,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class Config {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
