@@ -20,8 +20,9 @@ public class Log {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "log_task_id", nullable = false)
-    private Integer taskId;
+    @ManyToOne
+    @JoinColumn(name = "log_task_id", nullable = false)
+    private Task task;
 
     @Column(name = "text_content")
     private String textContent;
