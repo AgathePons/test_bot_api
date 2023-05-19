@@ -22,7 +22,7 @@ public class Log {
 
     @ManyToOne
     @JoinColumn(name = "log_task_id", nullable = false)
-    private Task task;
+    private Task logTaskId;
 
     @Column(name = "text_content")
     private String textContent;
