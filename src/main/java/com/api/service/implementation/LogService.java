@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,13 +21,15 @@ public class LogService implements LogServiceInterface {
 
     @Override
     public List<LogDto> findAll() {
-        return StreamUtils.toStream(this.logRepo.findAll())
+        return StreamUtils.toStream(logRepo.findAll())
                 .map(logEntity -> modelMapper.map(logEntity, LogDto.class))
                 .toList();
     }
 
     @Override
     public List<LogDto> findByLogTaskId(Integer logTaskId) {
-        return Collections.emptyList();
+        return StreamUtils.toStream(logRepo.findByLogTaskId(logTaskId))
+                .map(logEntity -> modelMapper.map(logEntity, LogDto.class))
+                .toList();
     }
 }
