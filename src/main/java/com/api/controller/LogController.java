@@ -20,9 +20,8 @@ public class LogController {
         return logService.findAll();
     }
 
-    @GetMapping("{taskId}")
-    public  Iterable<LogDto> getByLogTaskId(@PathVariable("taskId") Integer taskId) {
-        System.out.println("LogController getByLogTaskId :" + taskId);
-        return logService.findByLogTaskId(taskId);
+    @GetMapping("{logTaskId}")
+    public  Iterable<LogDto> getByLogTaskId(@PathVariable("logTaskId") Integer logTaskId) {
+        return logService.findByLogTaskId(logTaskId);
     }
 }

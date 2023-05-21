@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 public class LogDto {
     private Long id;
-    private Integer taskId;
+    private Integer logTaskId;
     private String textContent;
     private Date dateLog;
     private Integer logOrder;
