@@ -48,7 +48,8 @@ public class Task {
     @Column(name = "playable", nullable = false)
     private Boolean playable = false;
 
-    @OneToMany(mappedBy = "logTaskId", cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "log_task_id")
     @Builder.Default
     private Set<Log> logs = new HashSet<>();
 }
