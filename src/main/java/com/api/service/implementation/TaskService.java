@@ -1,5 +1,6 @@
 package com.api.service.implementation;
 
+import com.api.Utils.StreamUtils;
 import com.api.dto.TaskDto;
 import com.api.dto.TaskWithLogDto;
 import com.api.repository.LogRepo;
@@ -27,12 +28,16 @@ public class TaskService implements TaskServiceInterface {
 
     @Override
     public List<TaskDto> findAll() {
-        return null;
+        return StreamUtils.toStream(taskRepo.findAll())
+                .map(taskEntity -> modelMapper.map(taskEntity, TaskDto.class))
+                .toList();
     }
 
     @Override
     public Collection<TaskWithLogDto> findAllWithLog() {
-        return null;
+        return StreamUtils.toStream(taskRepo.findAll())
+                .map(taskEntity -> modelMapper.map(taskEntity, TaskWithLogDto.class))
+                .toList();
     }
 
     @Override
@@ -52,7 +57,7 @@ public class TaskService implements TaskServiceInterface {
     }
 
     @Override
-    public Optional<TaskWithLogDto> findByTaskIdWithLog(Long taskId) {
+    public Optional<TaskWithLogDto> findByTaskIdWithLog(Integer taskId) {
         return Optional.empty();
     }
 }

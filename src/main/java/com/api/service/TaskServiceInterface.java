@@ -46,6 +46,6 @@ public interface TaskServiceInterface {
      * @param taskId of the task
      * @return optional of a task
      */
-    Optional<TaskWithLogDto> findByTaskIdWithLog(Long taskId);
+    Optional<TaskWithLogDto> findByTaskIdWithLog(Integer taskId);
 
 }
