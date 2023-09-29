@@ -50,6 +50,7 @@ public class Task {
 
     @OneToMany
     @JoinColumn(name = "log_task_id")
+    @OrderBy("logOrder ASC")
     @Builder.Default
     private Set<Log> logs = new HashSet<>();
 }

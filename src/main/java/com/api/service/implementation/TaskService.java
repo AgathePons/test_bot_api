@@ -1,16 +1,20 @@
 package com.api.service.implementation;
 
 import com.api.Utils.StreamUtils;
+import com.api.dto.LogDto;
 import com.api.dto.TaskDto;
 import com.api.dto.TaskWithLogDto;
+import com.api.entities.Task;
 import com.api.repository.LogRepo;
 import com.api.repository.TaskRepo;
 import com.api.service.TaskServiceInterface;
+import jakarta.persistence.EntityManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 

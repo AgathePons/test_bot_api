@@ -26,7 +26,6 @@ public class TaskController {
 
     @GetMapping("{taskId}")
     public Optional<TaskWithLogDto> getByIdWithLog(@PathVariable("taskId") Long taskId) {
-        System.out.println("TaskController getByTaskIdWithLog() for taskId " + taskId);
         return taskService.findByIdWithLog(taskId);
     }
 }

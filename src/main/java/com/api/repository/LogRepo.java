@@ -13,4 +13,6 @@ public interface LogRepo extends CrudRepository<Log, Long> {
             nativeQuery = true
     )
     List<Log> findByLogTaskId(Integer logTaskId);
+
+
 }

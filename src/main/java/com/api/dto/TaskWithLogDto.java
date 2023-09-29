@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -14,5 +15,5 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString(callSuper = true)
 public class TaskWithLogDto extends TaskDto {
-    private Set<Log> logs;
+    private List<LogDto> logs;
 }
