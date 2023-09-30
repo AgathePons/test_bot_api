@@ -48,4 +48,17 @@ public interface TaskServiceInterface {
      */
     Optional<TaskWithLogDto> findByTaskIdWithLog(Integer taskId);
 
+    /**
+     * Add new task
+     * @param taskDto
+     * @return Optional<TaskDto> task completed
+     */
+    TaskDto add(TaskDto taskDto);
+
+    /**
+     * Delete one task by id
+     * @param id Long
+     * @return true if found and deleted, false if not found
+     */
+    boolean delete(Long id);
 }

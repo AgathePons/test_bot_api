@@ -56,12 +56,29 @@ public class TaskService implements TaskServiceInterface {
 
     @Override
     public Optional<TaskDto> findByTaskId(Integer taskId) {
-
-        return Optional.empty();
+        return this.taskRepo.findByTaskId(taskId).map(taskEntity -> modelMapper.map(taskEntity, TaskDto.class));
     }
 
     @Override
     public Optional<TaskWithLogDto> findByTaskIdWithLog(Integer taskId) {
-        return Optional.empty();
+        return this.taskRepo.findByTaskId(taskId).map(taskEntity -> modelMapper.map(taskEntity, TaskWithLogDto.class));
+    }
+
+    @Override
+    public TaskDto add(TaskDto taskDto) {
+        var taskEntity = modelMapper.map(taskDto, Task.class);
+        this.taskRepo.save(taskEntity);
+        return modelMapper.map(taskEntity, TaskDto.class);
+    }
+
+    @Override
+    public boolean delete(Long id) {
+
+        Optional<Task> taskToDelete = this.taskRepo.findById(id);
+        if(taskToDelete.isPresent()) {
+            this.taskRepo.delete(taskToDelete.get());
+            return true;
+        }
+        return false;
     }
 }
