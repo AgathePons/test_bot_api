@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     /**
-     * Override default handling of validation errors
+     *
      * @param exception
      * @param headers
      * @param status
