@@ -57,4 +57,17 @@ public class LogService implements LogServiceInterface {
         }
         return false;
     }
+
+    @Override
+    public Optional<LogDto> update(LogDto logDto) {
+        return this.logRepo.findById(logDto.getId())
+                .map(logEntity -> {
+                    // update entity object with DTO fields
+                    modelMapper.map(logDto, logEntity);
+                    // save in DB
+                    logRepo.save(logEntity);
+                    // transform entity updated in DTO and return
+                    return modelMapper.map(logEntity, LogDto.class);
+                });
+    }
 }

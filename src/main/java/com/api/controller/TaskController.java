@@ -92,12 +92,11 @@ public class TaskController {
 
     /**
      * Update a task
-     * @param taskDto task to update
+     * @param taskDto to update
      * @return TaskDto updated or NoDataFoundError
      */
     @PutMapping
     public TaskDto update(@Valid @RequestBody TaskDto taskDto) {
-        System.out.println("PUUUUUUUUUUUUT");
         return taskService.update(taskDto)
                 .orElseThrow(() -> NoDataFoundError.withId(ITEM_TYPE, taskDto.getId()));
     }

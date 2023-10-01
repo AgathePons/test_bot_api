@@ -10,27 +10,27 @@ public interface LogServiceInterface {
 
     /**
      * Find all logs
-     * @return a collection of logDto
+     * @return Collection<LogDto>
      */
     Collection<LogDto> findAll();
 
     /**
      * Find one log by ID
-     * @return one LogDto
+     * @return Optional<LogDto>
      */
     Optional<LogDto> findById(Long logId);
 
     /**
      * Find logs for one task by logTaskId
      * @param logTaskId taskId of the task
-     * @return a collection of logDto
+     * @return Collection<LogDto>
      */
     Collection<LogDto> findByLogTaskId(Integer logTaskId);
 
     /**
      * Add n ew log
      * @param logDto
-     * @return logDto
+     * @return LogDto completed
      */
     LogDto add(LogDto logDto);
 
@@ -40,4 +40,11 @@ public interface LogServiceInterface {
      * @return true if found and deleted, false if not found
      */
     boolean delete(Long id);
+
+    /**
+     * Update a log
+     * @param logDto
+     * @return Optional<LogDto>
+     */
+    Optional<LogDto> update(LogDto logDto);
 }

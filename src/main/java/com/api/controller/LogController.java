@@ -78,4 +78,15 @@ public class LogController {
             throw NoDataFoundError.withId(ITEM_TYPE, id);
         }
     }
+
+    /**
+     * Update a log
+     * @param logDto to update
+     * @return LogDto updated or NoDataFoundError
+     */
+    @PutMapping
+    public LogDto update(@Valid @RequestBody LogDto logDto) {
+        return logService.update(logDto)
+                .orElseThrow(() -> NoDataFoundError.withId(ITEM_TYPE, logDto.getId()));
+    }
 }

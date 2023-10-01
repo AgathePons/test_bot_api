@@ -90,7 +90,7 @@ public class TaskService implements TaskServiceInterface {
                     modelMapper.map(taskDto, taskEntity);
                     // save in DB
                     taskRepo.save(taskEntity);
-                    // transform entity updated in DTO
+                    // transform entity updated in DTO and return
                     return modelMapper.map(taskEntity, TaskDto.class);
                 });
     }
