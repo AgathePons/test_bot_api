@@ -66,4 +66,16 @@ public class LogController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public LogDto add(@Valid @RequestBody LogDto logDto) { return logService.add(logDto); }
+
+    /**
+     * Delete a log
+     * @param id of the log (Long)
+     */
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable("id") Long id) {
+        if (!logService.delete(id)) {
+            throw NoDataFoundError.withId(ITEM_TYPE, id);
+        }
+    }
 }

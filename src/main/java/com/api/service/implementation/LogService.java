@@ -47,4 +47,14 @@ public class LogService implements LogServiceInterface {
         this.logRepo.save(logEntity);
         return modelMapper.map(logEntity, LogDto.class);
     }
+
+    @Override
+    public boolean delete(Long id) {
+        Optional<Log> logToDelete = this.logRepo.findById(id);
+        if(logToDelete.isPresent()) {
+            this.logRepo.delete(logToDelete.get());
+            return true;
+        }
+        return false;
+    }
 }

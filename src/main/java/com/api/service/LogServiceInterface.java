@@ -33,4 +33,11 @@ public interface LogServiceInterface {
      * @return logDto
      */
     LogDto add(LogDto logDto);
+
+    /**
+     * Delete one log by id
+     * @param id Long
+     * @return true if found and deleted, false if not found
+     */
+    boolean delete(Long id);
 }

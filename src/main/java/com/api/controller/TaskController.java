@@ -84,7 +84,7 @@ public class TaskController {
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable("id") long id) {
+    public void deleteById(@PathVariable("id") Long id) {
         if (!taskService.delete(id)) {
             throw NoDataFoundError.withId(ITEM_TYPE, id);
         }
