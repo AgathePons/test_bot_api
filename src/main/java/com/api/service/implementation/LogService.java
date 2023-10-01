@@ -2,9 +2,9 @@ package com.api.service.implementation;
 
 import com.api.Utils.StreamUtils;
 import com.api.dto.LogDto;
+import com.api.entities.Log;
 import com.api.repository.LogRepo;
 import com.api.service.LogServiceInterface;
-import jakarta.persistence.EntityManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +39,12 @@ public class LogService implements LogServiceInterface {
         return StreamUtils.toStream(logRepo.findByLogTaskId(logTaskId))
                 .map(logEntity -> modelMapper.map(logEntity, LogDto.class))
                 .toList();
+    }
+
+    @Override
+    public LogDto add(LogDto logDto) {
+        var logEntity = modelMapper.map(logDto, Log.class);
+        this.logRepo.save(logEntity);
+        return modelMapper.map(logEntity, LogDto.class);
     }
 }

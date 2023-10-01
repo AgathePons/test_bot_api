@@ -51,7 +51,7 @@ public interface TaskServiceInterface {
     /**
      * Add new task
      * @param taskDto
-     * @return Optional<TaskDto> task completed
+     * @return TaskDto task completed
      */
     TaskDto add(TaskDto taskDto);
 

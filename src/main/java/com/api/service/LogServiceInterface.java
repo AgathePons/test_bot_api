@@ -27,4 +27,10 @@ public interface LogServiceInterface {
      */
     Collection<LogDto> findByLogTaskId(Integer logTaskId);
 
+    /**
+     * Add n ew log
+     * @param logDto
+     * @return logDto
+     */
+    LogDto add(LogDto logDto);
 }

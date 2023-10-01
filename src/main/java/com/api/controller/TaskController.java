@@ -69,8 +69,8 @@ public class TaskController {
 
     /**
      * Add new task
-     * @param taskDto TaskDto of the task to create
-     * @return TaskDto task created with id
+     * @param taskDto to create
+     * @return TaskDto created with id
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -90,6 +90,11 @@ public class TaskController {
         }
     }
 
+    /**
+     * Update a task
+     * @param taskDto task to update
+     * @return TaskDto updated or NoDataFoundError
+     */
     @PutMapping
     public TaskDto update(@Valid @RequestBody TaskDto taskDto) {
         System.out.println("PUUUUUUUUUUUUT");
