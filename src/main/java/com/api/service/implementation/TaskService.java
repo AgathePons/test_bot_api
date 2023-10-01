@@ -81,4 +81,17 @@ public class TaskService implements TaskServiceInterface {
         }
         return false;
     }
+
+    @Override
+    public Optional<TaskDto> update(TaskDto taskDto) {
+        return this.taskRepo.findById(taskDto.getId())
+                .map(taskEntity -> {
+                    // update entity object with DTO fields
+                    modelMapper.map(taskDto, taskEntity);
+                    // save in DB
+                    taskRepo.save(taskEntity);
+                    // transform entity updated in DTO
+                    return modelMapper.map(taskEntity, TaskDto.class);
+                });
+    }
 }

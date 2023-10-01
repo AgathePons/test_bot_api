@@ -61,4 +61,6 @@ public interface TaskServiceInterface {
      * @return true if found and deleted, false if not found
      */
     boolean delete(Long id);
+
+    Optional<TaskDto> update(TaskDto taskDto);
 }

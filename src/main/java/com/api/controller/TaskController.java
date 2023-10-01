@@ -90,5 +90,10 @@ public class TaskController {
         }
     }
 
-    
+    @PutMapping
+    public TaskDto update(@Valid @RequestBody TaskDto taskDto) {
+        System.out.println("PUUUUUUUUUUUUT");
+        return taskService.update(taskDto)
+                .orElseThrow(() -> NoDataFoundError.withId(ITEM_TYPE, taskDto.getId()));
+    }
 }
