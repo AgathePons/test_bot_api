@@ -89,4 +89,7 @@ public class LogController {
         return logService.update(logDto)
                 .orElseThrow(() -> NoDataFoundError.withId(ITEM_TYPE, logDto.getId()));
     }
+
+    // Clear logs for one task
+    // Clear all logs
 }
