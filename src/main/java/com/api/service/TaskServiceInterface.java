@@ -22,28 +22,28 @@ public interface TaskServiceInterface {
 
     /**
      * Find one task by id without associated logs
-     * @param id of the task
+     * @param id Long of the task
      * @return Optional<TaskDto>
      */
     Optional<TaskDto> findById(Long id);
 
     /**
      * Find one task by id with associated logs
-     * @param id of the task
+     * @param id Long of the task
      * @return Optional<TaskDto>
      */
     Optional<TaskWithLogDto> findByIdWithLog(Long id);
 
     /**
      * Find one task by taskId without associated logs
-     * @param taskId of the task
+     * @param taskId Integer of the task
      * @return Optional<TaskDto>
      */
     Optional<TaskDto> findByTaskId(Integer taskId);
 
     /**
      * Find one task by taskId with associated logs
-     * @param taskId of the task
+     * @param taskId Integer of the task
      * @return Optional<TaskDto>
      */
     Optional<TaskWithLogDto> findByTaskIdWithLog(Integer taskId);
